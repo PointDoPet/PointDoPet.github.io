@@ -1,7 +1,11 @@
-.header {
+:host {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.header {
   background: var(--pdp-yellow);
   box-shadow: 0 2px 12px rgba(17, 24, 39, 0.12);
 }
@@ -23,7 +27,7 @@
   border-radius: 50%;
   background: var(--pdp-graphite);
   color: var(--pdp-yellow);
-  font-size: 1.1rem;
+  font-size: 1.45rem;
 }
 
 .brand__name {
@@ -51,6 +55,14 @@
 
   .p-menubar-item-link-active {
     font-weight: 700;
+  }
+}
+
+// 960px é o breakpoint padrão do p-menubar para virar hambúrguer.
+@media (max-width: 960px) {
+  :host ::ng-deep .p-menubar-button {
+    order: -1;
+    margin-right: 0.5rem;
   }
 }
 

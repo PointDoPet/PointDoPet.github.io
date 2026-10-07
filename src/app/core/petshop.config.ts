@@ -17,7 +17,7 @@ export const PETSHOP = {
   servicos: [
     { value: 'Banho', label: 'Banho', icon: 'pi pi-sparkles', descricao: 'Banho com shampoo adequado, secagem e perfume.' },
     { value: 'Tosa', label: 'Tosa', icon: 'pi pi-star', descricao: 'Tosa higiênica ou na tesoura, do jeito que seu pet gosta.' },
-    { value: 'Banho e Tosa', label: 'Banho e Tosa', icon: 'pi pi-heart', descricao: 'O pacote completo para seu pet sair lindo e cheiroso.' },
+    { value: 'Banho e Tosa', label: 'Banho e Tosa', icon: 'pi pi-paw', descricao: 'O pacote completo para seu pet sair lindo e cheiroso.' },
   ],
   especies: ['Cachorro', 'Gato'],
   portes: [

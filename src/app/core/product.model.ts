@@ -14,7 +14,7 @@ export const CATEGORIAS = [
   { value: 'racao', label: 'Ração', icon: 'pi pi-box', descricao: 'Rações secas e úmidas para cães e gatos' },
   { value: 'higiene', label: 'Higiene', icon: 'pi pi-sparkles', descricao: 'Shampoos, tapetes e areia' },
   { value: 'acessorios', label: 'Acessórios', icon: 'pi pi-tag', descricao: 'Coleiras, comedouros e brinquedos' },
-  { value: 'animais', label: 'Animais', icon: 'pi pi-heart', descricao: 'Hamster, periquito e peixe betta' },
+  { value: 'animais', label: 'Animais', icon: 'pi pi-paw', descricao: 'Hamster, periquito e peixe betta' },
 ] as const satisfies readonly { value: Categoria; label: string; icon: string; descricao: string }[];
 
 export function isCategoria(value: unknown): value is Categoria {
