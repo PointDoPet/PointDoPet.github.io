@@ -37,15 +37,6 @@
   }
 }
 
-.catalog__notice {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--pdp-orange-soft);
-  border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
-}
-
 .catalog__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

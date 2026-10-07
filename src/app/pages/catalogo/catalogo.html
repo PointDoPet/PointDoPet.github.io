@@ -33,13 +33,6 @@
       </p-iconfield>
     </div>
 
-    @if (filtro() === 'animais') {
-      <p class="catalog__notice">
-        <i class="pi pi-info-circle"></i>
-        Animais não são vendidos pelo site. Consulte a disponibilidade pelo WhatsApp.
-      </p>
-    }
-
     @if (produtos.isLoading()) {
       <div class="catalog__grid">
         @for (i of [1, 2, 3, 4, 5, 6, 7, 8]; track i) {
@@ -86,7 +79,8 @@
                 </div>
               } @else {
                 <p-button
-                  label="Consultar disponibilidade"
+                  label="Consultar"
+                  [ariaLabel]="'Consultar ' + produto.nome + ' pelo WhatsApp'"
                   icon="pi pi-whatsapp"
                   styleClass="btn-dark"
                   [fluid]="true"
