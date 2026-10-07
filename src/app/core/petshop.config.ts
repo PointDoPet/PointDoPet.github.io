@@ -2,10 +2,10 @@ export const PETSHOP = {
   nome: 'Point do Pet',
   slogan: 'O cantinho do seu pet no bairro',
   /** Somente dígitos, com DDI 55 e DDD. */
-  whatsapp: '5511999999999',
-  telefoneExibicao: '(11) 99999-9999',
-  endereco: 'Rua dos Pets, 123 - Centro',
-  mapsUrl: 'https://maps.google.com/?q=Rua+dos+Pets+123',
+  whatsapp: '5511994223943',
+  telefoneExibicao: '(11) 99422-3943',
+  endereco: 'Rua Ilha Mexicana, 25C - Jardim Pérola III',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Rua+Ilha+Mexicana+25C+Jardim+P%C3%A9rola+III',
   instagram: 'https://instagram.com/pointdopet',
   horarioFuncionamento: ['Seg a Sex: 8h às 19h', 'Sábado: 8h às 14h', 'Domingo: fechado'],
   /** 0 = domingo, 6 = sábado (padrão do DatePicker). */
