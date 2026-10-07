@@ -10,12 +10,15 @@ export const PETSHOP = {
   horarioFuncionamento: ['Seg a Sáb: 8h30 às 20h', 'Domingo: 8h30 às 13h'],
   /** 0 = domingo, 6 = sábado (padrão do DatePicker). */
   diasFechados: [] as number[],
-  /** Último horário de cada dia com folga para o serviço terminar antes de fechar. */
-  horariosAgendamento: {
-    segundaASabado: [
-      '08:30', '09:30', '10:30', '11:30', '12:30', '13:30', '14:30', '15:30', '16:30', '17:30', '18:30',
-    ],
-    domingo: ['08:30', '09:30', '10:30', '11:30'],
+  /** Expediente usado para gerar os horários de agendamento (formato HH:MM). */
+  expediente: {
+    segundaASabado: { abertura: '08:30', fechamento: '20:00' },
+    domingo: { abertura: '08:30', fechamento: '13:00' },
+  },
+  agendamento: {
+    intervaloMinutos: 60,
+    /** O último horário marcável fica pelo menos esse tempo antes de fechar. */
+    ultimoHorarioAntesDeFecharMinutos: 60,
   },
   servicos: [
     { value: 'Banho', label: 'Banho', icon: 'pi pi-sparkles', descricao: 'Banho com shampoo adequado, secagem e perfume.' },

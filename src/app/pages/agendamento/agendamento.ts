@@ -21,17 +21,29 @@ function mesmoDia(a: Date, b: Date): boolean {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
+function paraMinutos(hhmm: string): number {
+  const [hora, minuto] = hhmm.split(':').map(Number);
+  return hora * 60 + minuto;
+}
+
+function paraHHMM(minutos: number): string {
+  return `${String(Math.floor(minutos / 60)).padStart(2, '0')}:${String(minutos % 60).padStart(2, '0')}`;
+}
+
 function horariosDoDia(data: Date, agora = new Date()): string[] {
   if (PETSHOP.diasFechados.includes(data.getDay())) return [];
-  const horarios =
-    data.getDay() === 0 ? PETSHOP.horariosAgendamento.domingo : PETSHOP.horariosAgendamento.segundaASabado;
-  if (!mesmoDia(data, agora)) return horarios;
+  const { abertura, fechamento } =
+    data.getDay() === 0 ? PETSHOP.expediente.domingo : PETSHOP.expediente.segundaASabado;
+  const { intervaloMinutos, ultimoHorarioAntesDeFecharMinutos } = PETSHOP.agendamento;
 
-  const limite = agora.getHours() * 60 + agora.getMinutes() + ANTECEDENCIA_MINUTOS;
-  return horarios.filter((h) => {
-    const [hora, minuto] = h.split(':').map(Number);
-    return hora * 60 + minuto >= limite;
-  });
+  const ultimo = paraMinutos(fechamento) - ultimoHorarioAntesDeFecharMinutos;
+  const minimo = mesmoDia(data, agora) ? agora.getHours() * 60 + agora.getMinutes() + ANTECEDENCIA_MINUTOS : 0;
+
+  const horarios: string[] = [];
+  for (let t = paraMinutos(abertura); t <= ultimo; t += intervaloMinutos) {
+    if (t >= minimo) horarios.push(paraHHMM(t));
+  }
+  return horarios;
 }
 
 function primeiroDiaDisponivel(): Date {
