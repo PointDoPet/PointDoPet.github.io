@@ -1,10 +1,10 @@
 @use 'primeicons/primeicons.css';
 
 :root {
-  --pdp-yellow: #facc15;
-  --pdp-yellow-strong: #eab308;
-  --pdp-yellow-soft: #fef9c3;
-  --pdp-cream: #fffbeb;
+  --pdp-orange: #f97316;
+  --pdp-orange-strong: #ea580c;
+  --pdp-orange-soft: #ffedd5;
+  --pdp-cream: #fff7ed;
   --pdp-ink: #1f2937;
   --pdp-ink-soft: #4b5563;
   --pdp-graphite: #111827;
@@ -90,7 +90,7 @@ img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--pdp-graphite);
-  background: var(--pdp-yellow-soft);
+  background: var(--pdp-orange-soft);
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
   margin-bottom: 0.75rem;

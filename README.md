@@ -17,7 +17,7 @@ npm run build      # gera dist/point-do-pet/browser
 | WhatsApp, endereço, horários de funcionamento e de agendamento, serviços, portes | `src/app/core/petshop.config.ts` |
 | Produtos e animais do catálogo | `public/data/products.json` |
 | Fotos dos produtos | `public/images/products/` |
-| Cores do tema (amarelo) | `src/app/theme/point-do-pet.preset.ts` e variáveis `--pdp-*` em `src/styles.scss` |
+| Cores do tema (laranja) | `src/app/theme/point-do-pet.preset.ts` e variáveis `--pdp-*` em `src/styles.scss` |
 
 Cada produto em `products.json` precisa de `id` único, `nome`, `categoria` (`racao`, `higiene`, `acessorios` ou `animais`), `descricao` e `imagem`. Produtos à venda têm `preco`; animais não têm preço e aparecem com o botão "Consultar disponibilidade".
 

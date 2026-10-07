@@ -1,5 +1,5 @@
 .catalog-hero {
-  background: var(--pdp-yellow);
+  background: var(--pdp-orange);
   padding: 2.5rem 0;
 
   h1 {
@@ -41,7 +41,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--pdp-yellow-soft);
+  background: var(--pdp-orange-soft);
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
 }
@@ -62,7 +62,7 @@
 
   i {
     font-size: 2.5rem;
-    color: var(--pdp-yellow-strong);
+    color: var(--pdp-orange-strong);
   }
 }
 
@@ -94,7 +94,7 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  background: var(--pdp-yellow-soft);
+  background: var(--pdp-orange-soft);
 }
 
 .product-card__title {

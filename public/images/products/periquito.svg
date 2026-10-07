@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Periquito">
-  <rect width="400" height="300" fill="#fef9c3"/>
+  <rect width="400" height="300" fill="#ffedd5"/>
   <line x1="60" y1="240" x2="340" y2="240" stroke="#92400e" stroke-width="12" stroke-linecap="round"/>
   <path d="M215 200 l40 70 l-30 -5 z" fill="#2563eb" stroke="#111827" stroke-width="4" stroke-linejoin="round"/>
   <ellipse cx="200" cy="170" rx="58" ry="72" fill="#4ade80" stroke="#111827" stroke-width="6"/>
