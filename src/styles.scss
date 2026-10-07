@@ -20,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  // Altura do header fixo: campos focados e âncoras não ficam escondidos atrás dele.
+  scroll-padding-top: 5rem;
 }
 
 body {
