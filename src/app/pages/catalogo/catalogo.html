@@ -20,17 +20,19 @@
       />
       <span id="filtro-categoria" class="sr-only">Filtrar por categoria</span>
 
-      <p-iconfield iconPosition="left" styleClass="catalog__search">
-        <p-inputicon styleClass="pi pi-search" />
-        <input
-          pInputText
-          type="search"
-          placeholder="Buscar produto"
-          aria-label="Buscar produto"
-          [ngModel]="busca()"
-          (ngModelChange)="busca.set($event)"
-        />
-      </p-iconfield>
+      @if (mostrarBusca()) {
+        <p-iconfield iconPosition="left" styleClass="catalog__search">
+          <p-inputicon styleClass="pi pi-search" />
+          <input
+            pInputText
+            type="search"
+            placeholder="Buscar produto"
+            aria-label="Buscar produto"
+            [ngModel]="busca()"
+            (ngModelChange)="busca.set($event)"
+          />
+        </p-iconfield>
+      }
     </div>
 
     @if (produtos.isLoading()) {

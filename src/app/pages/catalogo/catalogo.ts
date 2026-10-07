@@ -62,9 +62,11 @@ export class Catalogo {
     return isCategoria(categoria) ? categoria : 'todos';
   });
 
+  protected readonly mostrarBusca = computed(() => this.filtro() !== 'animais');
+
   protected readonly produtosFiltrados = computed(() => {
     const filtro = this.filtro();
-    const termo = normalizar(this.busca());
+    const termo = this.mostrarBusca() ? normalizar(this.busca()) : '';
     return this.produtos
       .value()
       .filter((p) => filtro === 'todos' || p.categoria === filtro)
