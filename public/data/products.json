@@ -99,14 +99,14 @@
     "id": "hamster",
     "nome": "Hamster",
     "categoria": "animais",
-    "descricao": "Dócil e fácil de cuidar, ótimo primeiro pet. Consulte cores disponíveis.",
+    "descricao": "Dócil e fácil de cuidar, ótimo primeiro pet.",
     "imagem": "images/products/hamster.svg"
   },
   {
     "id": "periquito",
     "nome": "Periquito",
     "categoria": "animais",
-    "descricao": "Alegre e sociável, vive bem em casal. Consulte cores disponíveis.",
+    "descricao": "Alegre e sociável, vive bem em casal.",
     "imagem": "images/products/periquito.svg"
   },
   {
