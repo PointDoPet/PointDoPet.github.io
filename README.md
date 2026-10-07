@@ -19,7 +19,10 @@ npm run build      # gera dist/point-do-pet/browser
 | Fotos dos produtos | `public/images/products/` |
 | Cores do tema (laranja) | `src/app/theme/point-do-pet.preset.ts` e variáveis `--pdp-*` em `src/styles.scss` |
 
-Cada produto em `products.json` precisa de `id` único, `nome`, `categoria` (`racao`, `higiene`, `acessorios` ou `animais`), `descricao` e `imagem`. Produtos à venda têm `preco`; animais não têm preço e aparecem com o botão "Consultar disponibilidade".
+Cada produto em `products.json` precisa de `id` único, `nome`, `categoria` (`racao`, `higiene`, `acessorios` ou `animais`), `descricao` e `imagem`. Produtos à venda têm `preco`; animais não têm preço e aparecem com o botão "Consultar".
+
+- Preço em faixa: use `preco` (mínimo) e `precoMax` (máximo). O site mostra "R$ X a R$ Y" e o carrinho envia um total estimado.
+- Venda por kg: adicione `"unidade": "kg"`. A quantidade no carrinho passa a ser em kg e o preço é por kg.
 
 ## Deploy
 

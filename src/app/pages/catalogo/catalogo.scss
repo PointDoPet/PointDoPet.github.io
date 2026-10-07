@@ -107,8 +107,21 @@
 }
 
 .product-card__price {
-  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
   color: var(--pdp-graphite);
+
+  strong {
+    font-size: 1.25rem;
+  }
+
+  .product-card__price--faixa {
+    font-size: 1rem;
+  }
+
+  small {
+    color: var(--pdp-ink-soft);
+  }
 }
 
 @media (max-width: 560px) {

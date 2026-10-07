@@ -1,4 +1,3 @@
-import { CurrencyPipe } from '@angular/common';
 import { httpResource } from '@angular/common/http';
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +13,15 @@ import { Skeleton } from 'primeng/skeleton';
 import { Tag } from 'primeng/tag';
 
 import { CartStore } from '../../core/cart.store';
-import { CATEGORIAS, Categoria, Product, categoriaLabel, isCategoria, isVendavel } from '../../core/product.model';
+import {
+  CATEGORIAS,
+  Categoria,
+  Product,
+  categoriaLabel,
+  formatPreco,
+  isCategoria,
+  isVendavel,
+} from '../../core/product.model';
 import { openWhatsApp } from '../../core/whatsapp';
 
 type Filtro = Categoria | 'todos';
@@ -26,7 +33,6 @@ function normalizar(texto: string): string {
 @Component({
   selector: 'app-catalogo',
   imports: [
-    CurrencyPipe,
     FormsModule,
     Button,
     Card,
@@ -75,6 +81,7 @@ export class Catalogo {
 
   protected readonly categoriaLabel = categoriaLabel;
   protected readonly isVendavel = isVendavel;
+  protected readonly formatPreco = formatPreco;
 
   protected selecionarFiltro(filtro: Filtro | null): void {
     this.router.navigate([], {

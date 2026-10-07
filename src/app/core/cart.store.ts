@@ -1,13 +1,13 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
 
-import { Product, isVendavel } from './product.model';
+import { Product, isVendavel, subtotal } from './product.model';
 
 export interface CartItem {
   product: Product;
   quantidade: number;
 }
 
-const STORAGE_KEY = 'point-do-pet:carrinho';
+const STORAGE_KEY = 'point-do-pet:carrinho:v2';
 
 function lerDoLocalStorage(): CartItem[] {
   try {
@@ -26,8 +26,16 @@ export class CartStore {
 
   readonly totalItens = computed(() => this.items().reduce((soma, i) => soma + i.quantidade, 0));
   readonly total = computed(() =>
-    this.items().reduce((soma, i) => soma + (i.product.preco ?? 0) * i.quantidade, 0),
+    this.items().reduce(
+      (soma, i) => {
+        const { min, max } = subtotal(i.product, i.quantidade);
+        return { min: soma.min + min, max: soma.max + max };
+      },
+      { min: 0, max: 0 },
+    ),
   );
+  /** Algum item tem faixa de preço, então o total é uma estimativa. */
+  readonly totalEstimado = computed(() => this.total().max > this.total().min);
   readonly vazio = computed(() => this.items().length === 0);
 
   constructor() {

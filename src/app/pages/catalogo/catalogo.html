@@ -71,7 +71,12 @@
             <ng-template #footer>
               @if (isVendavel(produto)) {
                 <div class="product-card__footer">
-                  <strong class="product-card__price">{{ produto.preco | currency: 'BRL' }}</strong>
+                  <div class="product-card__price">
+                    <strong [class.product-card__price--faixa]="produto.precoMax">{{ formatPreco(produto) }}</strong>
+                    @if (produto.unidade === 'kg') {
+                      <small>por kg</small>
+                    }
+                  </div>
                   <p-button
                     label="Adicionar"
                     icon="pi pi-cart-plus"

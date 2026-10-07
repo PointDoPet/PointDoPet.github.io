@@ -1,99 +1,154 @@
 [
   {
-    "id": "racao-caes-adultos-15kg",
-    "nome": "Ração Premium Cães Adultos 15kg",
+    "id": "racao-golden",
+    "nome": "Ração Golden",
     "categoria": "racao",
-    "descricao": "Sabor frango e arroz, para cães adultos de porte médio e grande.",
+    "descricao": "Vendida a granel.",
     "imagem": "images/products/racao.svg",
-    "preco": 179.9
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
   },
   {
-    "id": "racao-caes-filhotes-3kg",
-    "nome": "Ração Cães Filhotes 3kg",
+    "id": "racao-magnus",
+    "nome": "Ração Magnus",
     "categoria": "racao",
-    "descricao": "Grãos pequenos e ricos em DHA para o desenvolvimento do filhote.",
+    "descricao": "Vendida a granel.",
     "imagem": "images/products/racao.svg",
-    "preco": 64.9
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
   },
   {
-    "id": "racao-gatos-castrados-10kg",
-    "nome": "Ração Gatos Castrados 10kg",
+    "id": "racao-realidade",
+    "nome": "Ração Realidade",
     "categoria": "racao",
-    "descricao": "Controle de peso e saúde urinária para gatos castrados.",
+    "descricao": "Vendida a granel.",
     "imagem": "images/products/racao.svg",
-    "preco": 154.9
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
   },
   {
-    "id": "sache-gatos-carne",
-    "nome": "Sachê Gatos Adultos Carne 85g",
+    "id": "racao-allcanis",
+    "nome": "Ração Allcanis",
     "categoria": "racao",
-    "descricao": "Alimento úmido com pedaços ao molho.",
+    "descricao": "Para cães, vendida a granel.",
     "imagem": "images/products/racao.svg",
-    "preco": 3.5
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
   },
   {
-    "id": "shampoo-neutro-500ml",
-    "nome": "Shampoo Neutro 500ml",
+    "id": "racao-gatan",
+    "nome": "Ração Gatan",
+    "categoria": "racao",
+    "descricao": "Para gatos, vendida a granel.",
+    "imagem": "images/products/racao.svg",
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
+  },
+  {
+    "id": "racao-100-cat",
+    "nome": "Ração 100% Cat",
+    "categoria": "racao",
+    "descricao": "Para gatos, vendida a granel.",
+    "imagem": "images/products/racao.svg",
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
+  },
+  {
+    "id": "racao-bega-cat",
+    "nome": "Ração Bega Cat",
+    "categoria": "racao",
+    "descricao": "Para gatos, vendida a granel.",
+    "imagem": "images/products/racao.svg",
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
+  },
+  {
+    "id": "racao-essencial-cat",
+    "nome": "Ração Essencial Cat",
+    "categoria": "racao",
+    "descricao": "Para gatos, vendida a granel.",
+    "imagem": "images/products/racao.svg",
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
+  },
+  {
+    "id": "racao-special-dog",
+    "nome": "Ração Special Dog",
+    "categoria": "racao",
+    "descricao": "Para cães, vendida a granel.",
+    "imagem": "images/products/racao.svg",
+    "preco": 10,
+    "precoMax": 21,
+    "unidade": "kg"
+  },
+  {
+    "id": "shampoo",
+    "nome": "Shampoo",
     "categoria": "higiene",
-    "descricao": "Para cães e gatos de pele sensível, sem perfume forte.",
+    "descricao": "Para cães e gatos. Consulte as opções.",
     "imagem": "images/products/higiene.svg",
-    "preco": 29.9
+    "preco": 13.9,
+    "precoMax": 25.9
   },
   {
-    "id": "tapete-higienico-30un",
-    "nome": "Tapete Higiênico 30 unidades",
+    "id": "tapete-higienico-7un",
+    "nome": "Tapete Higiênico 7 unidades",
     "categoria": "higiene",
-    "descricao": "Alta absorção com gel que neutraliza odores.",
+    "descricao": "Pacote com 7 unidades.",
     "imagem": "images/products/higiene.svg",
-    "preco": 59.9
+    "preco": 17
   },
   {
-    "id": "areia-sanitaria-4kg",
-    "nome": "Areia Sanitária para Gatos 4kg",
+    "id": "tapete-higienico-8un",
+    "nome": "Tapete Higiênico 8 unidades",
     "categoria": "higiene",
-    "descricao": "Granulado fino que forma torrões e facilita a limpeza.",
+    "descricao": "Pacote com 8 unidades.",
     "imagem": "images/products/higiene.svg",
-    "preco": 24.9
+    "preco": 18
   },
   {
-    "id": "escova-dental-pet",
-    "nome": "Kit Escova e Creme Dental Pet",
+    "id": "areia-sanitaria",
+    "nome": "Areia Sanitária",
     "categoria": "higiene",
-    "descricao": "Escova de cerdas macias e creme dental sabor carne.",
+    "descricao": "Para gatos. Consulte as opções.",
     "imagem": "images/products/higiene.svg",
-    "preco": 22.9
+    "preco": 6,
+    "precoMax": 15
   },
   {
-    "id": "comedouro-inox-medio",
-    "nome": "Comedouro Inox Médio",
+    "id": "acessorios-caes-gatos",
+    "nome": "Acessórios para Cães e Gatos",
     "categoria": "acessorios",
-    "descricao": "Base antiderrapante, fácil de lavar.",
+    "descricao": "Diversos modelos. Consulte as opções.",
     "imagem": "images/products/acessorios.svg",
-    "preco": 39.9
+    "preco": 12.5,
+    "precoMax": 15.5
   },
   {
-    "id": "coleira-ajustavel",
-    "nome": "Coleira Ajustável com Guia",
+    "id": "comedouro-caes-gatos",
+    "nome": "Comedouro para Cães e Gatos",
     "categoria": "acessorios",
-    "descricao": "Nylon resistente, tamanhos P, M e G.",
+    "descricao": "Diversos tamanhos e modelos.",
     "imagem": "images/products/acessorios.svg",
-    "preco": 49.9
+    "preco": 2,
+    "precoMax": 6
   },
   {
-    "id": "cama-pet-media",
-    "nome": "Caminha Pet Média",
+    "id": "bebedouro-passaros",
+    "nome": "Bebedouro para Pássaros",
     "categoria": "acessorios",
-    "descricao": "Macia, lavável e com bordas altas.",
+    "descricao": "Para gaiolas de passarinho.",
     "imagem": "images/products/acessorios.svg",
-    "preco": 119.9
-  },
-  {
-    "id": "bolinha-mordedor",
-    "nome": "Bolinha Mordedor",
-    "categoria": "acessorios",
-    "descricao": "Borracha atóxica, ideal para brincar e limpar os dentes.",
-    "imagem": "images/products/acessorios.svg",
-    "preco": 14.9
+    "preco": 2,
+    "precoMax": 4
   },
   {
     "id": "hamster",

@@ -55,6 +55,11 @@
   font-weight: 600;
 }
 
+.cart-item__unit {
+  color: var(--pdp-ink-soft);
+  font-size: 0.8rem;
+}
+
 .cart-item__actions {
   display: flex;
   align-items: center;
@@ -62,7 +67,7 @@
 }
 
 :host ::ng-deep .cart-item__qty {
-  width: 3rem;
+  width: 4rem;
   text-align: center;
 }
 

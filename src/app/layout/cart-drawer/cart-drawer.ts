@@ -1,4 +1,3 @@
-import { CurrencyPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -10,13 +9,14 @@ import { InputText } from 'primeng/inputtext';
 import { SelectButton } from 'primeng/selectbutton';
 
 import { CartStore } from '../../core/cart.store';
-import { formatBRL, openWhatsApp } from '../../core/whatsapp';
+import { Product, formatFaixa, formatPreco, formatQuantidade, subtotal } from '../../core/product.model';
+import { openWhatsApp } from '../../core/whatsapp';
 
 type FormaEntrega = 'retirada' | 'entrega';
 
 @Component({
   selector: 'app-cart-drawer',
-  imports: [CurrencyPipe, FormsModule, RouterLink, Button, Drawer, InputNumber, InputText, SelectButton],
+  imports: [FormsModule, RouterLink, Button, Drawer, InputNumber, InputText, SelectButton],
   templateUrl: './cart-drawer.html',
   styleUrl: './cart-drawer.scss',
 })
@@ -34,6 +34,14 @@ export class CartDrawer {
   protected readonly entrega = signal<FormaEntrega>('retirada');
   protected readonly endereco = signal('');
   protected readonly tentouEnviar = signal(false);
+
+  protected readonly formatPreco = formatPreco;
+  protected readonly totalFormatado = computed(() => formatFaixa(this.cart.total().min, this.cart.total().max));
+
+  protected subtotalFormatado(product: Product, quantidade: number): string {
+    const { min, max } = subtotal(product, quantidade);
+    return formatFaixa(min, max);
+  }
 
   protected readonly nomeInvalido = computed(() => this.nome().trim().length < 2);
   protected readonly enderecoInvalido = computed(
@@ -67,19 +75,21 @@ export class CartDrawer {
   }
 
   private montarMensagem(): string {
-    const linhas = this.cart
-      .items()
-      .map((i) => `${i.quantidade}x ${i.product.nome} - ${formatBRL((i.product.preco ?? 0) * i.quantidade)}`);
+    const linhas = this.cart.items().map((i) => {
+      const { min, max } = subtotal(i.product, i.quantidade);
+      return `${formatQuantidade(i.product, i.quantidade)} ${i.product.nome} - ${formatFaixa(min, max)}`;
+    });
 
     const entrega =
       this.entrega() === 'entrega' ? `Entrega: ${this.endereco().trim()}` : 'Retirada na loja';
+    const { min, max } = this.cart.total();
 
     return [
       'Olá! Gostaria de fazer um pedido:',
       '',
       ...linhas,
       '',
-      `Total: ${formatBRL(this.cart.total())}`,
+      `${this.cart.totalEstimado() ? 'Total estimado' : 'Total'}: ${formatFaixa(min, max)}`,
       `Nome: ${this.nome().trim()}`,
       entrega,
     ].join('\n');

@@ -23,9 +23,10 @@
           <img [src]="item.product.imagem" [alt]="item.product.nome" class="cart-item__img" />
           <div class="cart-item__info">
             <strong>{{ item.product.nome }}</strong>
-            <span class="cart-item__price">
-              {{ (item.product.preco ?? 0) * item.quantidade | currency: 'BRL' }}
-            </span>
+            <span class="cart-item__price">{{ subtotalFormatado(item.product, item.quantidade) }}</span>
+            @if (item.product.unidade === 'kg') {
+              <small class="cart-item__unit">{{ formatPreco(item.product) }} por kg</small>
+            }
             <div class="cart-item__actions">
               <p-inputnumber
                 [ngModel]="item.quantidade"
@@ -34,6 +35,7 @@
                 buttonLayout="horizontal"
                 [min]="1"
                 [max]="99"
+                [suffix]="item.product.unidade === 'kg' ? ' kg' : ''"
                 incrementButtonIcon="pi pi-plus"
                 decrementButtonIcon="pi pi-minus"
                 inputStyleClass="cart-item__qty"
@@ -54,10 +56,16 @@
     </ul>
 
     <div class="cart-total">
-      <span>Total</span>
-      <strong>{{ cart.total() | currency: 'BRL' }}</strong>
+      <span>{{ cart.totalEstimado() ? 'Total estimado' : 'Total' }}</span>
+      <strong>{{ totalFormatado() }}</strong>
     </div>
-    <p class="cart-note">Valores sujeitos a confirmação pelo Point do Pet.</p>
+    <p class="cart-note">
+      @if (cart.totalEstimado()) {
+        Itens com faixa de preço têm o valor final confirmado pelo Point do Pet.
+      } @else {
+        Valores sujeitos a confirmação pelo Point do Pet.
+      }
+    </p>
 
     <form class="cart-form" (ngSubmit)="enviar()">
       <div class="field">
