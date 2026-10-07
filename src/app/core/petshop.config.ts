@@ -7,12 +7,15 @@ export const PETSHOP = {
   endereco: 'Rua Ilha Mexicana, 25C - Jardim Pérola III',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Rua+Ilha+Mexicana+25C+Jardim+P%C3%A9rola+III',
   instagram: 'https://instagram.com/pointdopet',
-  horarioFuncionamento: ['Seg a Sex: 8h às 19h', 'Sábado: 8h às 14h', 'Domingo: fechado'],
+  horarioFuncionamento: ['Seg a Sáb: 8h30 às 20h', 'Domingo: 8h30 às 13h'],
   /** 0 = domingo, 6 = sábado (padrão do DatePicker). */
-  diasFechados: [0],
+  diasFechados: [] as number[],
+  /** Último horário de cada dia com folga para o serviço terminar antes de fechar. */
   horariosAgendamento: {
-    semana: ['08:00', '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-    sabado: ['08:00', '09:00', '10:00', '11:00', '12:00'],
+    segundaASabado: [
+      '08:30', '09:30', '10:30', '11:30', '12:30', '13:30', '14:30', '15:30', '16:30', '17:30', '18:30',
+    ],
+    domingo: ['08:30', '09:30', '10:30', '11:30'],
   },
   servicos: [
     { value: 'Banho', label: 'Banho', icon: 'pi pi-sparkles', descricao: 'Banho com shampoo adequado, secagem e perfume.' },

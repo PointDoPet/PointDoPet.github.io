@@ -23,7 +23,8 @@ function mesmoDia(a: Date, b: Date): boolean {
 
 function horariosDoDia(data: Date, agora = new Date()): string[] {
   if (PETSHOP.diasFechados.includes(data.getDay())) return [];
-  const horarios = data.getDay() === 6 ? PETSHOP.horariosAgendamento.sabado : PETSHOP.horariosAgendamento.semana;
+  const horarios =
+    data.getDay() === 0 ? PETSHOP.horariosAgendamento.domingo : PETSHOP.horariosAgendamento.segundaASabado;
   if (!mesmoDia(data, agora)) return horarios;
 
   const limite = agora.getHours() * 60 + agora.getMinutes() + ANTECEDENCIA_MINUTOS;
