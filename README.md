@@ -28,13 +28,12 @@ Cada produto em `products.json` precisa de `id` único, `nome`, `categoria` (`ra
 
 ### GitHub Pages (principal)
 
-O workflow `.github/workflows/deploy-pages.yml` publica o site a cada push na `main`, em `https://<usuario>.github.io/PointDoPet/`.
+O repositório é [PointDoPet/PointDoPet.github.io](https://github.com/PointDoPet/PointDoPet.github.io). O workflow `.github/workflows/deploy-pages.yml` publica o site a cada push na `main`, em `https://pointdopet.github.io/`.
 
-1. Crie o repositório `PointDoPet` no GitHub.
-2. Em **Settings > Pages > Build and deployment**, escolha **Source: GitHub Actions**.
-3. Faça push da `main`.
+1. Em **Settings > Pages > Build and deployment**, escolha **Source: GitHub Actions**.
+2. Faça push da `main`.
 
-O caminho base `/PointDoPet/` está no script `build:pages` do `package.json`. Se o nome do repositório mudar, ou se for usado um domínio próprio, troque para `/NovoNome/` ou `/`.
+O caminho base `/` está no script `build:pages` do `package.json`: repositórios no formato `conta.github.io` são servidos na raiz do domínio. Se o site for movido para um repositório com outro nome, troque para `/NomeDoRepo/`.
 
 ### Alternativas
 

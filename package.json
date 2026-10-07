@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:pages": "ng build --base-href /PointDoPet/ && cp dist/point-do-pet/browser/index.html dist/point-do-pet/browser/404.html",
+    "build:pages": "ng build --base-href / && cp dist/point-do-pet/browser/index.html dist/point-do-pet/browser/404.html",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

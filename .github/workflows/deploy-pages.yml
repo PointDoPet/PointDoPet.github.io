@@ -27,7 +27,7 @@ jobs:
 
       - run: npm ci
 
-      # O 404.html (cópia do index.html) faz links diretos como /PointDoPet/catalogo funcionarem.
+      # O 404.html (cópia do index.html) faz links diretos como /catalogo funcionarem.
       - run: npm run build:pages
 
       - uses: actions/configure-pages@v5
