@@ -1,0 +1,191 @@
+<section class="schedule-hero">
+  <div class="container">
+    <span class="eyebrow schedule-hero__eyebrow">Banho e tosa</span>
+    <h1>Agende o banho e tosa do seu pet</h1>
+    <p>Preencha os dados e envie pelo WhatsApp. A gente confirma o horário com você.</p>
+  </div>
+</section>
+
+<section class="section schedule">
+  <div class="container schedule__grid">
+    <form class="schedule__form" [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+      <fieldset>
+        <legend id="servico-legend">1. Qual serviço?</legend>
+        <p-selectbutton
+          formControlName="servico"
+          [options]="petshop.servicos"
+          optionLabel="label"
+          optionValue="value"
+          [allowEmpty]="false"
+          styleClass="schedule__services"
+          ariaLabelledBy="servico-legend"
+        />
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Sobre o pet</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="pet">Nome do pet</label>
+            <input pInputText id="pet" formControlName="pet" [class.ng-dirty]="invalido('pet')" />
+            @if (invalido('pet')) {
+              <small class="error">Informe o nome do pet.</small>
+            }
+          </div>
+
+          <div class="field">
+            <label for="especie">Espécie</label>
+            <p-select
+              inputId="especie"
+              formControlName="especie"
+              [options]="petshop.especies"
+              [fluid]="true"
+            />
+          </div>
+
+          <div class="field field--full">
+            <label for="porte">Porte</label>
+            <p-select
+              inputId="porte"
+              formControlName="porte"
+              [options]="petshop.portes"
+              optionLabel="label"
+              optionValue="value"
+              placeholder="Selecione o porte"
+              [fluid]="true"
+              [class.ng-dirty]="invalido('porte')"
+            />
+            @if (invalido('porte')) {
+              <small class="error">Selecione o porte do pet.</small>
+            }
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Quando?</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="data">Data</label>
+            <p-datepicker
+              inputId="data"
+              formControlName="data"
+              dateFormat="dd/mm/yy"
+              [minDate]="minDate"
+              [maxDate]="maxDate"
+              [disabledDays]="petshop.diasFechados"
+              [showIcon]="true"
+              [readonlyInput]="true"
+              placeholder="Escolha o dia"
+              [fluid]="true"
+              [class.ng-dirty]="invalido('data')"
+            />
+            @if (invalido('data')) {
+              <small class="error">Escolha uma data.</small>
+            }
+          </div>
+
+          <div class="field">
+            <label for="horario">Horário</label>
+            <p-select
+              inputId="horario"
+              formControlName="horario"
+              [options]="horariosDisponiveis()"
+              [placeholder]="dataSelecionada() ? 'Escolha o horário' : 'Escolha a data primeiro'"
+              emptyMessage="Escolha a data primeiro"
+              [fluid]="true"
+              [class.ng-dirty]="invalido('horario')"
+            />
+            @if (invalido('horario')) {
+              <small class="error">Escolha um horário.</small>
+            }
+          </div>
+        </div>
+        <p class="hint">
+          <i class="pi pi-info-circle"></i> Sábado só pela manhã e fechado aos domingos. O horário é
+          confirmado pelo WhatsApp.
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Seus dados</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="tutor">Seu nome</label>
+            <input
+              pInputText
+              id="tutor"
+              formControlName="tutor"
+              autocomplete="name"
+              [class.ng-dirty]="invalido('tutor')"
+            />
+            @if (invalido('tutor')) {
+              <small class="error">Informe seu nome.</small>
+            }
+          </div>
+
+          <div class="field">
+            <label for="telefone">WhatsApp</label>
+            <p-inputmask
+              inputId="telefone"
+              formControlName="telefone"
+              mask="(99) 99999-9999"
+              placeholder="(11) 99999-9999"
+              autocomplete="tel"
+              [fluid]="true"
+              [class.ng-dirty]="invalido('telefone')"
+            />
+            @if (invalido('telefone')) {
+              <small class="error">Informe um telefone para contato.</small>
+            }
+          </div>
+
+          <div class="field field--full">
+            <label for="observacoes">Observações (opcional)</label>
+            <textarea
+              pTextarea
+              id="observacoes"
+              formControlName="observacoes"
+              rows="3"
+              placeholder="Ex.: tem medo de secador, alergia a algum produto..."
+            ></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <p-button
+        type="submit"
+        label="Enviar agendamento pelo WhatsApp"
+        icon="pi pi-whatsapp"
+        size="large"
+        styleClass="btn-dark"
+        [fluid]="true"
+      />
+    </form>
+
+    <aside class="schedule__aside">
+      <div class="aside-card">
+        <h2>Nossos serviços</h2>
+        <ul>
+          @for (s of petshop.servicos; track s.value) {
+            <li>
+              <i [class]="s.icon"></i>
+              <div>
+                <strong>{{ s.label }}</strong>
+                <p>{{ s.descricao }}</p>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="aside-card aside-card--dark">
+        <h2>Horário de atendimento</h2>
+        @for (linha of petshop.horarioFuncionamento; track linha) {
+          <p>{{ linha }}</p>
+        }
+        <p class="aside-card__address"><i class="pi pi-map-marker"></i> {{ petshop.endereco }}</p>
+      </div>
+    </aside>
+  </div>
+</section>

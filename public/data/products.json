@@ -1,0 +1,119 @@
+[
+  {
+    "id": "racao-caes-adultos-15kg",
+    "nome": "Ração Premium Cães Adultos 15kg",
+    "categoria": "racao",
+    "descricao": "Sabor frango e arroz, para cães adultos de porte médio e grande.",
+    "imagem": "images/products/racao.svg",
+    "preco": 179.9
+  },
+  {
+    "id": "racao-caes-filhotes-3kg",
+    "nome": "Ração Cães Filhotes 3kg",
+    "categoria": "racao",
+    "descricao": "Grãos pequenos e ricos em DHA para o desenvolvimento do filhote.",
+    "imagem": "images/products/racao.svg",
+    "preco": 64.9
+  },
+  {
+    "id": "racao-gatos-castrados-10kg",
+    "nome": "Ração Gatos Castrados 10kg",
+    "categoria": "racao",
+    "descricao": "Controle de peso e saúde urinária para gatos castrados.",
+    "imagem": "images/products/racao.svg",
+    "preco": 154.9
+  },
+  {
+    "id": "sache-gatos-carne",
+    "nome": "Sachê Gatos Adultos Carne 85g",
+    "categoria": "racao",
+    "descricao": "Alimento úmido com pedaços ao molho.",
+    "imagem": "images/products/racao.svg",
+    "preco": 3.5
+  },
+  {
+    "id": "shampoo-neutro-500ml",
+    "nome": "Shampoo Neutro 500ml",
+    "categoria": "higiene",
+    "descricao": "Para cães e gatos de pele sensível, sem perfume forte.",
+    "imagem": "images/products/higiene.svg",
+    "preco": 29.9
+  },
+  {
+    "id": "tapete-higienico-30un",
+    "nome": "Tapete Higiênico 30 unidades",
+    "categoria": "higiene",
+    "descricao": "Alta absorção com gel que neutraliza odores.",
+    "imagem": "images/products/higiene.svg",
+    "preco": 59.9
+  },
+  {
+    "id": "areia-sanitaria-4kg",
+    "nome": "Areia Sanitária para Gatos 4kg",
+    "categoria": "higiene",
+    "descricao": "Granulado fino que forma torrões e facilita a limpeza.",
+    "imagem": "images/products/higiene.svg",
+    "preco": 24.9
+  },
+  {
+    "id": "escova-dental-pet",
+    "nome": "Kit Escova e Creme Dental Pet",
+    "categoria": "higiene",
+    "descricao": "Escova de cerdas macias e creme dental sabor carne.",
+    "imagem": "images/products/higiene.svg",
+    "preco": 22.9
+  },
+  {
+    "id": "comedouro-inox-medio",
+    "nome": "Comedouro Inox Médio",
+    "categoria": "acessorios",
+    "descricao": "Base antiderrapante, fácil de lavar.",
+    "imagem": "images/products/acessorios.svg",
+    "preco": 39.9
+  },
+  {
+    "id": "coleira-ajustavel",
+    "nome": "Coleira Ajustável com Guia",
+    "categoria": "acessorios",
+    "descricao": "Nylon resistente, tamanhos P, M e G.",
+    "imagem": "images/products/acessorios.svg",
+    "preco": 49.9
+  },
+  {
+    "id": "cama-pet-media",
+    "nome": "Caminha Pet Média",
+    "categoria": "acessorios",
+    "descricao": "Macia, lavável e com bordas altas.",
+    "imagem": "images/products/acessorios.svg",
+    "preco": 119.9
+  },
+  {
+    "id": "bolinha-mordedor",
+    "nome": "Bolinha Mordedor",
+    "categoria": "acessorios",
+    "descricao": "Borracha atóxica, ideal para brincar e limpar os dentes.",
+    "imagem": "images/products/acessorios.svg",
+    "preco": 14.9
+  },
+  {
+    "id": "hamster",
+    "nome": "Hamster",
+    "categoria": "animais",
+    "descricao": "Dócil e fácil de cuidar, ótimo primeiro pet. Consulte cores disponíveis.",
+    "imagem": "images/products/hamster.svg"
+  },
+  {
+    "id": "periquito",
+    "nome": "Periquito",
+    "categoria": "animais",
+    "descricao": "Alegre e sociável, vive bem em casal. Consulte cores disponíveis.",
+    "imagem": "images/products/periquito.svg"
+  },
+  {
+    "id": "peixe-betta",
+    "nome": "Peixe Betta",
+    "categoria": "animais",
+    "descricao": "Nadadeiras exuberantes e cores vibrantes. Ideal para aquários pequenos.",
+    "imagem": "images/products/peixe-betta.svg"
+  }
+]

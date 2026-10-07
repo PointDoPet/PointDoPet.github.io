@@ -1,0 +1,48 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <div class="footer__brand">
+        <span class="footer__icon"><i class="pi pi-heart-fill"></i></span>
+        <strong>{{ petshop.nome }}</strong>
+      </div>
+      <p class="footer__muted">{{ petshop.slogan }}</p>
+    </div>
+
+    <div>
+      <h3>Onde estamos</h3>
+      <p>
+        <a [href]="petshop.mapsUrl" target="_blank" rel="noopener">
+          <i class="pi pi-map-marker"></i> {{ petshop.endereco }}
+        </a>
+      </p>
+      <p>
+        <a [href]="whatsappLink" target="_blank" rel="noopener">
+          <i class="pi pi-whatsapp"></i> {{ petshop.telefoneExibicao }}
+        </a>
+      </p>
+      <p>
+        <a [href]="petshop.instagram" target="_blank" rel="noopener">
+          <i class="pi pi-instagram"></i> Instagram
+        </a>
+      </p>
+    </div>
+
+    <div>
+      <h3>Horário</h3>
+      @for (linha of petshop.horarioFuncionamento; track linha) {
+        <p class="footer__line">{{ linha }}</p>
+      }
+    </div>
+
+    <div>
+      <h3>Navegue</h3>
+      <p class="footer__line"><a routerLink="/">Início</a></p>
+      <p class="footer__line"><a routerLink="/catalogo">Catálogo</a></p>
+      <p class="footer__line"><a routerLink="/agendamento">Agendar banho e tosa</a></p>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    © {{ ano }} {{ petshop.nome }}. Preços e disponibilidade sujeitos a confirmação.
+  </div>
+</footer>

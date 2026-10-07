@@ -1,0 +1,110 @@
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <span class="eyebrow hero__eyebrow">Banho e tosa no bairro</span>
+      <h1 class="hero__title">Seu pet limpinho, cheiroso e feliz no {{ petshop.nome }}</h1>
+      <p class="hero__text">
+        Cuidado de verdade, com carinho e sem pressa. Agende em menos de um minuto e confirme direto
+        pelo WhatsApp.
+      </p>
+      <div class="hero__actions">
+        <p-button
+          label="Agendar agora"
+          icon="pi pi-calendar-plus"
+          size="large"
+          styleClass="btn-dark"
+          [rounded]="true"
+          routerLink="/agendamento"
+        />
+        <p-button
+          label="Ver catálogo"
+          icon="pi pi-shop"
+          size="large"
+          severity="contrast"
+          [outlined]="true"
+          [rounded]="true"
+          routerLink="/catalogo"
+        />
+      </div>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <div class="hero__circle">
+        <i class="pi pi-heart-fill"></i>
+      </div>
+      <span class="hero__bubble hero__bubble--1"></span>
+      <span class="hero__bubble hero__bubble--2"></span>
+      <span class="hero__bubble hero__bubble--3"></span>
+      <div class="hero__badge"><i class="pi pi-sparkles"></i> Banho &amp; Tosa</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Nossos serviços</h2>
+    <p class="section__subtitle">Para cães e gatos de todos os portes.</p>
+
+    <div class="grid grid--3">
+      @for (servico of petshop.servicos; track servico.value) {
+        <p-card styleClass="service-card">
+          <div class="service-card__icon"><i [class]="servico.icon"></i></div>
+          <h3>{{ servico.label }}</h3>
+          <p>{{ servico.descricao }}</p>
+          <a routerLink="/agendamento" [queryParams]="{ servico: servico.value }" class="link-arrow">
+            Agendar {{ servico.label.toLowerCase() }} <i class="pi pi-arrow-right"></i>
+          </a>
+        </p-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <h2 class="section__title">Como funciona o agendamento</h2>
+    <p class="section__subtitle">Simples, rápido e sem ligação.</p>
+
+    <ol class="steps">
+      @for (passo of passos; track passo.titulo; let i = $index) {
+        <li class="step">
+          <span class="step__number">{{ i + 1 }}</span>
+          <i [class]="passo.icon + ' step__icon'"></i>
+          <h3>{{ passo.titulo }}</h3>
+          <p>{{ passo.texto }}</p>
+        </li>
+      }
+    </ol>
+
+    <div class="center">
+      <p-button
+        label="Agendar banho e tosa"
+        icon="pi pi-calendar-plus"
+        size="large"
+        [rounded]="true"
+        routerLink="/agendamento"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Tudo para o seu pet</h2>
+    <p class="section__subtitle">Monte seu pedido no site e envie pelo WhatsApp.</p>
+
+    <div class="grid grid--4">
+      @for (categoria of categorias; track categoria.value) {
+        <a
+          class="category-card"
+          routerLink="/catalogo"
+          [queryParams]="{ categoria: categoria.value }"
+        >
+          <span class="category-card__icon"><i [class]="categoria.icon"></i></span>
+          <strong>{{ categoria.label }}</strong>
+          <span class="category-card__desc">{{ categoria.descricao }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>

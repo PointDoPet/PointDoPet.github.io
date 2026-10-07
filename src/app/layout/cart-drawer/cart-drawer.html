@@ -1,0 +1,123 @@
+<p-drawer
+  [visible]="cart.drawerVisible()"
+  (visibleChange)="cart.drawerVisible.set($event)"
+  position="right"
+  header="Seu carrinho"
+  styleClass="cart-drawer"
+>
+  @if (cart.vazio()) {
+    <div class="cart-empty">
+      <i class="pi pi-shopping-cart"></i>
+      <p>Seu carrinho está vazio.</p>
+      <p-button
+        label="Ver catálogo"
+        icon="pi pi-shop"
+        routerLink="/catalogo"
+        (onClick)="cart.drawerVisible.set(false)"
+      />
+    </div>
+  } @else {
+    <ul class="cart-list">
+      @for (item of cart.items(); track item.product.id) {
+        <li class="cart-item">
+          <img [src]="item.product.imagem" [alt]="item.product.nome" class="cart-item__img" />
+          <div class="cart-item__info">
+            <strong>{{ item.product.nome }}</strong>
+            <span class="cart-item__price">
+              {{ (item.product.preco ?? 0) * item.quantidade | currency: 'BRL' }}
+            </span>
+            <div class="cart-item__actions">
+              <p-inputnumber
+                [ngModel]="item.quantidade"
+                (ngModelChange)="cart.setQuantidade(item.product.id, $event ?? 1)"
+                [showButtons]="true"
+                buttonLayout="horizontal"
+                [min]="1"
+                [max]="99"
+                incrementButtonIcon="pi pi-plus"
+                decrementButtonIcon="pi pi-minus"
+                inputStyleClass="cart-item__qty"
+                [ariaLabel]="'Quantidade de ' + item.product.nome"
+              />
+              <p-button
+                icon="pi pi-trash"
+                severity="danger"
+                [text]="true"
+                [rounded]="true"
+                [ariaLabel]="'Remover ' + item.product.nome"
+                (onClick)="cart.remove(item.product.id)"
+              />
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <div class="cart-total">
+      <span>Total</span>
+      <strong>{{ cart.total() | currency: 'BRL' }}</strong>
+    </div>
+    <p class="cart-note">Valores sujeitos a confirmação pelo Point do Pet.</p>
+
+    <form class="cart-form" (ngSubmit)="enviar()">
+      <div class="field">
+        <label for="cart-nome">Seu nome</label>
+        <input
+          pInputText
+          id="cart-nome"
+          name="nome"
+          [ngModel]="nome()"
+          (ngModelChange)="nome.set($event)"
+          autocomplete="name"
+          [class.ng-invalid]="tentouEnviar() && nomeInvalido()"
+          [class.ng-dirty]="tentouEnviar() && nomeInvalido()"
+        />
+        @if (tentouEnviar() && nomeInvalido()) {
+          <small class="error">Informe seu nome.</small>
+        }
+      </div>
+
+      <div class="field">
+        <label id="cart-entrega-label">Como prefere receber?</label>
+        <p-selectbutton
+          name="entrega"
+          [options]="opcoesEntrega"
+          optionLabel="label"
+          optionValue="value"
+          [allowEmpty]="false"
+          [ngModel]="entrega()"
+          (ngModelChange)="entrega.set($event)"
+          ariaLabelledBy="cart-entrega-label"
+        />
+      </div>
+
+      @if (entrega() === 'entrega') {
+        <div class="field">
+          <label for="cart-endereco">Endereço de entrega</label>
+          <input
+            pInputText
+            id="cart-endereco"
+            name="endereco"
+            [ngModel]="endereco()"
+            (ngModelChange)="endereco.set($event)"
+            autocomplete="street-address"
+            placeholder="Rua, número, complemento"
+            [class.ng-invalid]="tentouEnviar() && enderecoInvalido()"
+            [class.ng-dirty]="tentouEnviar() && enderecoInvalido()"
+          />
+          @if (tentouEnviar() && enderecoInvalido()) {
+            <small class="error">Informe o endereço para entrega.</small>
+          }
+        </div>
+      }
+
+      <p-button
+        type="submit"
+        label="Enviar pedido pelo WhatsApp"
+        icon="pi pi-whatsapp"
+        styleClass="cart-submit"
+        [fluid]="true"
+      />
+    </form>
+  }
+</p-drawer>

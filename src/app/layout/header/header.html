@@ -1,0 +1,40 @@
+<header class="header">
+  <div class="container">
+    <p-menubar [model]="items" [dt]="menubarDt" styleClass="header__menubar">
+      <ng-template #start>
+        <a routerLink="/" class="brand" aria-label="{{ nome }} - página inicial">
+          <span class="brand__icon"><i class="pi pi-heart-fill"></i></span>
+          <span class="brand__name">Point <small>do</small> Pet</span>
+        </a>
+      </ng-template>
+
+      <ng-template #end>
+        <div class="header__actions">
+          <p-button
+            routerLink="/agendamento"
+            icon="pi pi-calendar-plus"
+            label="Agendar banho e tosa"
+            styleClass="btn-dark header__cta"
+            [rounded]="true"
+            ariaLabel="Agendar banho e tosa"
+          />
+
+          <p-overlaybadge
+            [value]="cart.totalItens()"
+            [badgeDisabled]="cart.vazio()"
+            severity="contrast"
+          >
+            <p-button
+              icon="pi pi-shopping-cart"
+              [text]="true"
+              [rounded]="true"
+              styleClass="header__cart"
+              [ariaLabel]="'Abrir carrinho (' + cart.totalItens() + ' itens)'"
+              (onClick)="cart.open()"
+            />
+          </p-overlaybadge>
+        </div>
+      </ng-template>
+    </p-menubar>
+  </div>
+</header>

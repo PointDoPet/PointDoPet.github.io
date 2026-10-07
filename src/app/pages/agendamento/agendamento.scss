@@ -1,0 +1,154 @@
+.schedule-hero {
+  background: var(--pdp-yellow);
+  padding: 2.5rem 0;
+
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.schedule-hero__eyebrow {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.schedule {
+  padding-top: 2rem;
+}
+
+.schedule__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.schedule__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #fff;
+  border: 1px solid #f1f5f9;
+  border-radius: var(--pdp-radius);
+  padding: 1.75rem;
+  box-shadow: 0 6px 24px rgba(17, 24, 39, 0.06);
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  legend {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--pdp-graphite);
+    margin-bottom: 0.75rem;
+  }
+}
+
+:host ::ng-deep .schedule__services {
+  flex-wrap: wrap;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--pdp-ink-soft);
+}
+
+.schedule__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: 6rem;
+}
+
+.aside-card {
+  background: var(--pdp-cream);
+  border-radius: var(--pdp-radius);
+  padding: 1.5rem;
+
+  h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  li {
+    display: flex;
+    gap: 0.75rem;
+
+    i {
+      color: var(--pdp-yellow-strong);
+      font-size: 1.2rem;
+      margin-top: 0.15rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--pdp-ink-soft);
+    }
+  }
+
+  p {
+    margin-bottom: 0.35rem;
+  }
+}
+
+.aside-card--dark {
+  background: var(--pdp-graphite);
+  color: #e5e7eb;
+
+  h2 {
+    color: var(--pdp-yellow);
+  }
+}
+
+.aside-card__address {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .schedule__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule__aside {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .schedule__form {
+    padding: 1.25rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

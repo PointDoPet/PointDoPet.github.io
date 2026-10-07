@@ -1,0 +1,102 @@
+<section class="catalog-hero">
+  <div class="container">
+    <h1>Catálogo</h1>
+    <p>Escolha os produtos, monte seu carrinho e envie o pedido pelo WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section catalog">
+  <div class="container">
+    <div class="catalog__filters">
+      <p-selectbutton
+        [options]="opcoesFiltro"
+        optionLabel="label"
+        optionValue="value"
+        [allowEmpty]="false"
+        [ngModel]="filtro()"
+        (ngModelChange)="selecionarFiltro($event)"
+        ariaLabelledBy="filtro-categoria"
+        styleClass="catalog__categories"
+      />
+      <span id="filtro-categoria" class="sr-only">Filtrar por categoria</span>
+
+      <p-iconfield iconPosition="left" styleClass="catalog__search">
+        <p-inputicon styleClass="pi pi-search" />
+        <input
+          pInputText
+          type="search"
+          placeholder="Buscar produto"
+          aria-label="Buscar produto"
+          [ngModel]="busca()"
+          (ngModelChange)="busca.set($event)"
+        />
+      </p-iconfield>
+    </div>
+
+    @if (filtro() === 'animais') {
+      <p class="catalog__notice">
+        <i class="pi pi-info-circle"></i>
+        Animais não são vendidos pelo site. Consulte a disponibilidade pelo WhatsApp.
+      </p>
+    }
+
+    @if (produtos.isLoading()) {
+      <div class="catalog__grid">
+        @for (i of [1, 2, 3, 4, 5, 6, 7, 8]; track i) {
+          <p-skeleton height="320px" borderRadius="1rem" />
+        }
+      </div>
+    } @else if (produtos.error()) {
+      <div class="catalog__empty">
+        <i class="pi pi-exclamation-triangle"></i>
+        <p>Não foi possível carregar o catálogo. Tente novamente.</p>
+        <p-button label="Recarregar" icon="pi pi-refresh" (onClick)="produtos.reload()" />
+      </div>
+    } @else if (produtosFiltrados().length === 0) {
+      <div class="catalog__empty">
+        <i class="pi pi-search"></i>
+        <p>Nenhum produto encontrado.</p>
+      </div>
+    } @else {
+      <div class="catalog__grid">
+        @for (produto of produtosFiltrados(); track produto.id) {
+          <p-card styleClass="product-card">
+            <ng-template #header>
+              <img [src]="produto.imagem" [alt]="produto.nome" class="product-card__img" loading="lazy" />
+            </ng-template>
+
+            <p-tag
+              [value]="categoriaLabel(produto.categoria)"
+              [severity]="produto.categoria === 'animais' ? 'info' : 'warn'"
+              [rounded]="true"
+            />
+            <h3 class="product-card__title">{{ produto.nome }}</h3>
+            <p class="product-card__desc">{{ produto.descricao }}</p>
+
+            <ng-template #footer>
+              @if (isVendavel(produto)) {
+                <div class="product-card__footer">
+                  <strong class="product-card__price">{{ produto.preco | currency: 'BRL' }}</strong>
+                  <p-button
+                    label="Adicionar"
+                    icon="pi pi-cart-plus"
+                    [ariaLabel]="'Adicionar ' + produto.nome + ' ao carrinho'"
+                    (onClick)="adicionar(produto)"
+                  />
+                </div>
+              } @else {
+                <p-button
+                  label="Consultar disponibilidade"
+                  icon="pi pi-whatsapp"
+                  styleClass="btn-dark"
+                  [fluid]="true"
+                  (onClick)="consultar(produto)"
+                />
+              }
+            </ng-template>
+          </p-card>
+        }
+      </div>
+    }
+  </div>
+</section>

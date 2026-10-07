@@ -1,0 +1,127 @@
+.catalog-hero {
+  background: var(--pdp-yellow);
+  padding: 2.5rem 0;
+
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.catalog {
+  padding-top: 2rem;
+}
+
+.catalog__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+:host ::ng-deep .catalog__categories {
+  flex-wrap: wrap;
+}
+
+:host ::ng-deep .catalog__search {
+  min-width: min(280px, 100%);
+
+  input {
+    width: 100%;
+  }
+}
+
+.catalog__notice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--pdp-yellow-soft);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.catalog__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3rem 1rem;
+  color: var(--pdp-ink-soft);
+
+  i {
+    font-size: 2.5rem;
+    color: var(--pdp-yellow-strong);
+  }
+}
+
+:host ::ng-deep .product-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.1);
+  }
+
+  .p-card-body {
+    flex: 1;
+  }
+
+  .p-card-content {
+    flex: 1;
+  }
+}
+
+.product-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--pdp-yellow-soft);
+}
+
+.product-card__title {
+  font-size: 1.05rem;
+  margin: 0.75rem 0 0.35rem;
+}
+
+.product-card__desc {
+  color: var(--pdp-ink-soft);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.product-card__price {
+  font-size: 1.25rem;
+  color: var(--pdp-graphite);
+}
+
+@media (max-width: 560px) {
+  .product-card__img {
+    aspect-ratio: 16 / 9;
+  }
+}
