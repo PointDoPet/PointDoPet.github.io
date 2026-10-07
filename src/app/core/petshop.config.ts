@@ -24,8 +24,7 @@ export const PETSHOP = {
   ],
   especies: ['Cachorro', 'Gato'],
   portes: [
-    { value: 'pequeno', label: 'Pequeno (até 10kg)' },
-    { value: 'médio', label: 'Médio (10kg a 25kg)' },
-    { value: 'grande', label: 'Grande (acima de 25kg)' },
+    { value: 'pequeno', label: 'Pequeno (até 8kg)' },
+    { value: 'médio', label: 'Médio (8kg a 15kg)' },
   ],
 };
