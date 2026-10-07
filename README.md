@@ -1,6 +1,6 @@
 # Point do Pet
 
-Site do petshop Point do Pet em Angular 21 + PrimeNG 21. Sem backend: o pedido do carrinho e o agendamento de banho e tosa são enviados como mensagem pronta para o WhatsApp do petshop.
+Site do petshop Point do Pet em Angular 21 + PrimeNG 21. Sem backend: a consulta do carrinho e o agendamento de banho e tosa são enviados como mensagem pronta para o WhatsApp do petshop.
 
 ## Rodar localmente
 
@@ -21,7 +21,7 @@ npm run build      # gera dist/point-do-pet/browser
 
 Cada produto em `products.json` precisa de `id` único, `nome`, `categoria` (`racao`, `higiene`, `acessorios` ou `animais`), `descricao` e `imagem`. Produtos à venda têm `preco`; animais não têm preço e aparecem com o botão "Consultar".
 
-- Preço em faixa: use `preco` (mínimo) e `precoMax` (máximo). O site mostra "R$ X a R$ Y" e o carrinho envia um total estimado.
+- Preço em faixa: use `preco` (mínimo) e `precoMax` (máximo). O site mostra "R$ X a R$ Y".
 - Venda por kg: adicione `"unidade": "kg"`. A quantidade no carrinho passa a ser em kg e o preço é por kg.
 
 ## Deploy

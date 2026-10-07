@@ -23,10 +23,9 @@
           <img [src]="item.product.imagem" [alt]="item.product.nome" class="cart-item__img" />
           <div class="cart-item__info">
             <strong>{{ item.product.nome }}</strong>
-            <span class="cart-item__price">{{ subtotalFormatado(item.product, item.quantidade) }}</span>
-            @if (item.product.unidade === 'kg') {
-              <small class="cart-item__unit">{{ formatPreco(item.product) }} por kg</small>
-            }
+            <small class="cart-item__price">
+              {{ formatPreco(item.product) }}{{ item.product.unidade === 'kg' ? ' por kg' : '' }}
+            </small>
             <div class="cart-item__actions">
               <p-inputnumber
                 [ngModel]="item.quantidade"
@@ -55,16 +54,9 @@
       }
     </ul>
 
-    <div class="cart-total">
-      <span>{{ cart.totalEstimado() ? 'Total estimado' : 'Total' }}</span>
-      <strong>{{ totalFormatado() }}</strong>
-    </div>
     <p class="cart-note">
-      @if (cart.totalEstimado()) {
-        Itens com faixa de preço têm o valor final confirmado pelo Point do Pet.
-      } @else {
-        Valores sujeitos a confirmação pelo Point do Pet.
-      }
+      <i class="pi pi-whatsapp"></i>
+      Envie sua lista e o Point do Pet responde no WhatsApp com os valores e a disponibilidade.
     </p>
 
     <form class="cart-form" (ngSubmit)="enviar()">
@@ -121,7 +113,7 @@
 
       <p-button
         type="submit"
-        label="Enviar pedido pelo WhatsApp"
+        label="Consultar pelo WhatsApp"
         icon="pi pi-whatsapp"
         styleClass="cart-submit"
         [fluid]="true"

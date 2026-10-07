@@ -10,7 +10,7 @@ export interface Product {
   imagem: string;
   /** Preço fixo ou mínimo da faixa. Ausente em 'animais': animais são só para consulta. */
   preco?: number;
-  /** Quando presente, o preço é uma faixa (`preco` a `precoMax`) confirmada pela loja. */
+  /** Quando presente, o preço é uma faixa (`preco` a `precoMax`). */
   precoMax?: number;
   /** Vendido a granel; a quantidade no carrinho passa a ser em kg. */
   unidade?: 'kg';
@@ -35,19 +35,10 @@ export function isVendavel(product: Product): boolean {
   return product.categoria !== 'animais' && product.preco !== undefined;
 }
 
-export function formatFaixa(min: number, max: number): string {
-  return max > min ? `${formatBRL(min)} a ${formatBRL(max)}` : formatBRL(min);
-}
-
-/** Subtotal mínimo e máximo de uma quantidade do produto. */
-export function subtotal(product: Product, quantidade: number): { min: number; max: number } {
-  const min = (product.preco ?? 0) * quantidade;
-  return { min, max: (product.precoMax ?? product.preco ?? 0) * quantidade };
-}
-
 export function formatPreco(product: Product): string {
-  const { min, max } = subtotal(product, 1);
-  return formatFaixa(min, max);
+  const min = product.preco ?? 0;
+  const max = product.precoMax ?? min;
+  return max > min ? `${formatBRL(min)} a ${formatBRL(max)}` : formatBRL(min);
 }
 
 export function formatQuantidade(product: Product, quantidade: number): string {

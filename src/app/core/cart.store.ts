@@ -1,6 +1,6 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
 
-import { Product, isVendavel, subtotal } from './product.model';
+import { Product, isVendavel } from './product.model';
 
 export interface CartItem {
   product: Product;
@@ -25,17 +25,6 @@ export class CartStore {
   readonly drawerVisible = signal(false);
 
   readonly totalItens = computed(() => this.items().reduce((soma, i) => soma + i.quantidade, 0));
-  readonly total = computed(() =>
-    this.items().reduce(
-      (soma, i) => {
-        const { min, max } = subtotal(i.product, i.quantidade);
-        return { min: soma.min + min, max: soma.max + max };
-      },
-      { min: 0, max: 0 },
-    ),
-  );
-  /** Algum item tem faixa de preço, então o total é uma estimativa. */
-  readonly totalEstimado = computed(() => this.total().max > this.total().min);
   readonly vazio = computed(() => this.items().length === 0);
 
   constructor() {

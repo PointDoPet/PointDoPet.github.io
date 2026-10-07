@@ -9,7 +9,7 @@ import { InputText } from 'primeng/inputtext';
 import { SelectButton } from 'primeng/selectbutton';
 
 import { CartStore } from '../../core/cart.store';
-import { Product, formatFaixa, formatPreco, formatQuantidade, subtotal } from '../../core/product.model';
+import { formatPreco, formatQuantidade } from '../../core/product.model';
 import { openWhatsApp } from '../../core/whatsapp';
 
 type FormaEntrega = 'retirada' | 'entrega';
@@ -36,12 +36,6 @@ export class CartDrawer {
   protected readonly tentouEnviar = signal(false);
 
   protected readonly formatPreco = formatPreco;
-  protected readonly totalFormatado = computed(() => formatFaixa(this.cart.total().min, this.cart.total().max));
-
-  protected subtotalFormatado(product: Product, quantidade: number): string {
-    const { min, max } = subtotal(product, quantidade);
-    return formatFaixa(min, max);
-  }
 
   protected readonly nomeInvalido = computed(() => this.nome().trim().length < 2);
   protected readonly enderecoInvalido = computed(
@@ -55,13 +49,13 @@ export class CartDrawer {
     openWhatsApp(this.montarMensagem());
     this.messages.add({
       severity: 'success',
-      summary: 'Pedido montado!',
-      detail: 'Finalize o envio no WhatsApp. O Point do Pet confirma disponibilidade e valor.',
+      summary: 'Consulta montada!',
+      detail: 'Finalize o envio no WhatsApp. O Point do Pet responde com valores e disponibilidade.',
       life: 5000,
     });
 
     this.confirmation.confirm({
-      header: 'Pedido enviado?',
+      header: 'Consulta enviada?',
       message: 'Se você já enviou a mensagem no WhatsApp, podemos esvaziar o carrinho.',
       icon: 'pi pi-whatsapp',
       acceptButtonProps: { label: 'Sim, esvaziar' },
@@ -75,21 +69,18 @@ export class CartDrawer {
   }
 
   private montarMensagem(): string {
-    const linhas = this.cart.items().map((i) => {
-      const { min, max } = subtotal(i.product, i.quantidade);
-      return `${formatQuantidade(i.product, i.quantidade)} ${i.product.nome} - ${formatFaixa(min, max)}`;
-    });
+    const linhas = this.cart
+      .items()
+      .map((i) => `${formatQuantidade(i.product, i.quantidade)} ${i.product.nome}`);
 
     const entrega =
       this.entrega() === 'entrega' ? `Entrega: ${this.endereco().trim()}` : 'Retirada na loja';
-    const { min, max } = this.cart.total();
 
     return [
-      'Olá! Gostaria de fazer um pedido:',
+      'Olá! Gostaria de consultar valores e disponibilidade destes produtos:',
       '',
       ...linhas,
       '',
-      `${this.cart.totalEstimado() ? 'Total estimado' : 'Total'}: ${formatFaixa(min, max)}`,
       `Nome: ${this.nome().trim()}`,
       entrega,
     ].join('\n');
