@@ -77,7 +77,6 @@ export class Agendamento implements OnInit {
     tutor: ['', [Validators.required, Validators.minLength(2)]],
     telefone: ['', Validators.required],
     pet: ['', Validators.required],
-    especie: ['Cachorro', Validators.required],
     porte: ['', Validators.required],
     data: this.fb.control<Date | null>(null, Validators.required),
     horario: ['', Validators.required],
@@ -138,7 +137,7 @@ export class Agendamento implements OnInit {
     return [
       'Olá! Gostaria de agendar:',
       `Serviço: ${v.servico}`,
-      `Pet: ${v.pet.trim()} (${v.especie}, porte ${v.porte})`,
+      `Pet: ${v.pet.trim()} (Cachorro, porte ${v.porte})`,
       `Data: ${data} às ${v.horario}`,
       `Tutor: ${v.tutor.trim()} - ${v.telefone}`,
       ...(v.observacoes.trim() ? [`Obs: ${v.observacoes.trim()}`] : []),

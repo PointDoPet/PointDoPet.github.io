@@ -26,24 +26,14 @@
         <legend>2. Sobre o pet</legend>
         <div class="form-grid">
           <div class="field">
-            <label for="pet">Nome do pet</label>
+            <label for="pet">Nome do cachorro</label>
             <input pInputText id="pet" formControlName="pet" [class.ng-dirty]="invalido('pet')" />
             @if (invalido('pet')) {
-              <small class="error">Informe o nome do pet.</small>
+              <small class="error">Informe o nome do cachorro.</small>
             }
           </div>
 
           <div class="field">
-            <label for="especie">Espécie</label>
-            <p-select
-              inputId="especie"
-              formControlName="especie"
-              [options]="petshop.especies"
-              [fluid]="true"
-            />
-          </div>
-
-          <div class="field field--full">
             <label for="porte">Porte</label>
             <p-select
               inputId="porte"
@@ -56,12 +46,12 @@
               [class.ng-dirty]="invalido('porte')"
             />
             @if (invalido('porte')) {
-              <small class="error">Selecione o porte do pet.</small>
+              <small class="error">Selecione o porte do cachorro.</small>
             }
           </div>
         </div>
         <p class="hint">
-          <i class="pi pi-info-circle"></i> Atendemos pets de porte pequeno e médio, até 15kg.
+          <i class="pi pi-info-circle"></i> Atendemos somente cães de porte pequeno e médio, até 15kg.
         </p>
       </fieldset>
 

@@ -25,7 +25,6 @@ export const PETSHOP = {
     { value: 'Tosa', label: 'Tosa', icon: 'pi pi-star', descricao: 'Tosa higiênica ou na tesoura, do jeito que seu pet gosta.' },
     { value: 'Banho e Tosa', label: 'Banho e Tosa', icon: 'pi pi-paw', descricao: 'O pacote completo para seu pet sair lindo e cheiroso.' },
   ],
-  especies: ['Cachorro', 'Gato'],
   portes: [
     { value: 'pequeno', label: 'Pequeno (até 8kg)' },
     { value: 'médio', label: 'Médio (8kg a 15kg)' },
