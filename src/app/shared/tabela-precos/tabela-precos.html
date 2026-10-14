@@ -1,0 +1,29 @@
+<div class="price-table">
+  <span [id]="id + '-label'" class="sr-only">Escolha o porte para ver os preços</span>
+  <p-selectbutton
+    [options]="opcoesPorte"
+    optionLabel="label"
+    optionValue="value"
+    [allowEmpty]="false"
+    [ngModel]="porteAtivo()"
+    (ngModelChange)="porteAtivo.set($event)"
+    [ariaLabelledBy]="id + '-label'"
+    styleClass="price-table__portes"
+  />
+
+  <p class="price-table__porte">Porte {{ porteAtivoLabel() }}</p>
+
+  <ul class="price-table__list">
+    @for (linha of linhas(); track linha.servico) {
+      <li class="price-table__row">
+        <span class="price-table__servico">{{ linha.servico }}</span>
+        <span class="price-table__valores">
+          @if (promocaoAtiva && linha.normal !== linha.final) {
+            <s><span class="sr-only">de </span>{{ linha.normal | currency: 'BRL' }}</s>
+          }
+          <strong><span class="sr-only">por </span>{{ linha.final | currency: 'BRL' }}</strong>
+        </span>
+      </li>
+    }
+  </ul>
+</div>

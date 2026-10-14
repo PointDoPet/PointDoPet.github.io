@@ -40,19 +40,44 @@
   </div>
 </section>
 
+<section class="section section--cream prices">
+  <div class="container prices__grid">
+    <div class="prices__intro">
+      <h2 class="section__title">Preços de banho e tosa</h2>
+      <p class="section__subtitle">Somente para cães de até 15kg. Escolha o porte para ver os valores.</p>
+      <app-promo-banner />
+      <p-button
+        label="Agendar com desconto"
+        icon="pi pi-calendar-plus"
+        size="large"
+        styleClass="btn-dark"
+        [rounded]="true"
+        routerLink="/agendamento"
+      />
+    </div>
+
+    <div class="prices__card">
+      <app-tabela-precos />
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <h2 class="section__title">Nossos serviços</h2>
-    <p class="section__subtitle">Somente para cães de porte pequeno e médio, até 15kg.</p>
+    <p class="section__subtitle">Somente para cães de porte XP, pequeno e médio, até 15kg.</p>
 
     <div class="grid grid--3">
       @for (servico of petshop.servicos; track servico.value) {
         <p-card styleClass="service-card">
           <div class="service-card__icon"><i [class]="servico.icon"></i></div>
-          <h3>{{ servico.label }}</h3>
+          <h3>{{ servico.value }}</h3>
           <p>{{ servico.descricao }}</p>
+          <p class="service-card__price">
+            a partir de <strong>{{ precoAPartirDe(servico.value) | currency: 'BRL' }}</strong>
+          </p>
           <a routerLink="/agendamento" [queryParams]="{ servico: servico.value }" class="link-arrow">
-            Agendar {{ servico.label.toLowerCase() }} <i class="pi pi-arrow-right"></i>
+            Agendar <i class="pi pi-arrow-right"></i>
           </a>
         </p-card>
       }

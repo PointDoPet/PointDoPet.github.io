@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import { CurrencyPipe, formatDate } from '@angular/common';
 import { Component, DestroyRef, OnInit, computed, inject, input } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -8,11 +8,13 @@ import { DatePicker } from 'primeng/datepicker';
 import { InputMask } from 'primeng/inputmask';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
-import { SelectButton } from 'primeng/selectbutton';
 import { Textarea } from 'primeng/textarea';
 
 import { PETSHOP } from '../../core/petshop.config';
-import { openWhatsApp } from '../../core/whatsapp';
+import { porteLabel, precoAPartirDe, precoFinal, precoNormal } from '../../core/precos';
+import { formatBRL, openWhatsApp } from '../../core/whatsapp';
+import { PromoBanner } from '../../shared/promo-banner/promo-banner';
+import { TabelaPrecos } from '../../shared/tabela-precos/tabela-precos';
 
 /** Antecedência mínima para agendar no mesmo dia. */
 const ANTECEDENCIA_MINUTOS = 60;
@@ -56,7 +58,18 @@ function primeiroDiaDisponivel(): Date {
 
 @Component({
   selector: 'app-agendamento',
-  imports: [ReactiveFormsModule, Button, DatePicker, InputMask, InputText, Select, SelectButton, Textarea],
+  imports: [
+    CurrencyPipe,
+    ReactiveFormsModule,
+    Button,
+    DatePicker,
+    InputMask,
+    InputText,
+    Select,
+    Textarea,
+    PromoBanner,
+    TabelaPrecos,
+  ],
   templateUrl: './agendamento.html',
   styleUrl: './agendamento.scss',
 })
@@ -73,7 +86,7 @@ export class Agendamento implements OnInit {
   protected readonly maxDate = new Date(Date.now() + 60 * 24 * 60 * 60 * 1000);
 
   protected readonly form = this.fb.group({
-    servico: ['Banho e Tosa', Validators.required],
+    servico: [PETSHOP.servicos[0].value, Validators.required],
     tutor: ['', [Validators.required, Validators.minLength(2)]],
     telefone: ['', Validators.required],
     pet: ['', Validators.required],
@@ -84,6 +97,23 @@ export class Agendamento implements OnInit {
   });
 
   protected readonly dataSelecionada = toSignal(this.form.controls.data.valueChanges, { initialValue: null });
+  protected readonly porteSelecionado = toSignal(this.form.controls.porte.valueChanges, { initialValue: '' });
+  protected readonly servicoSelecionado = toSignal(this.form.controls.servico.valueChanges, {
+    initialValue: this.form.controls.servico.value,
+  });
+
+  protected readonly promocaoAtiva = PETSHOP.promocao.ativa;
+  protected readonly precoNormal = precoNormal;
+  protected readonly precoFinal = precoFinal;
+  protected readonly precoAPartirDe = precoAPartirDe;
+
+  protected readonly resumo = computed(() => {
+    const porte = this.porteSelecionado();
+    const servico = this.servicoSelecionado();
+    const final = porte ? precoFinal(servico, porte) : undefined;
+    if (final === undefined) return null;
+    return { servico, porte: porteLabel(porte), normal: precoNormal(servico, porte)!, final };
+  });
 
   protected readonly horariosDisponiveis = computed(() => {
     const data = this.dataSelecionada();
@@ -133,11 +163,18 @@ export class Agendamento implements OnInit {
   private montarMensagem(): string {
     const v = this.form.getRawValue();
     const data = formatDate(v.data!, 'dd/MM/yyyy', 'pt-BR');
+    const resumo = this.resumo();
+    const valor = !resumo
+      ? []
+      : resumo.final < resumo.normal
+        ? [`Valor: ${formatBRL(resumo.final)} (promoção de inauguração, de ${formatBRL(resumo.normal)})`]
+        : [`Valor: ${formatBRL(resumo.final)}`];
 
     return [
       'Olá! Gostaria de agendar:',
       `Serviço: ${v.servico}`,
       `Pet: ${v.pet.trim()} (Cachorro, porte ${v.porte})`,
+      ...valor,
       `Data: ${data} às ${v.horario}`,
       `Tutor: ${v.tutor.trim()} - ${v.telefone}`,
       ...(v.observacoes.trim() ? [`Obs: ${v.observacoes.trim()}`] : []),

@@ -9,21 +9,10 @@
 <section class="section schedule">
   <div class="container schedule__grid">
     <form class="schedule__form" [formGroup]="form" (ngSubmit)="enviar()" novalidate>
-      <fieldset>
-        <legend id="servico-legend">1. Qual serviço?</legend>
-        <p-selectbutton
-          formControlName="servico"
-          [options]="petshop.servicos"
-          optionLabel="label"
-          optionValue="value"
-          [allowEmpty]="false"
-          styleClass="schedule__services"
-          ariaLabelledBy="servico-legend"
-        />
-      </fieldset>
+      <app-promo-banner />
 
       <fieldset>
-        <legend>2. Sobre o pet</legend>
+        <legend>1. Sobre o cachorro</legend>
         <div class="form-grid">
           <div class="field">
             <label for="pet">Nome do cachorro</label>
@@ -51,8 +40,38 @@
           </div>
         </div>
         <p class="hint">
-          <i class="pi pi-info-circle"></i> Atendemos somente cães de porte pequeno e médio, até 15kg.
+          <i class="pi pi-info-circle"></i> Atendemos somente cães de porte XP, pequeno e médio, até 15kg.
         </p>
+      </fieldset>
+
+      <fieldset>
+        <legend id="servico-legend">2. Qual serviço?</legend>
+        <div class="service-options" role="radiogroup" aria-labelledby="servico-legend">
+          @for (s of petshop.servicos; track s.value) {
+            <label class="service-option" [class.service-option--selected]="servicoSelecionado() === s.value">
+              <input type="radio" formControlName="servico" [value]="s.value" class="sr-only" />
+              <i [class]="s.icon + ' service-option__icon'"></i>
+              <span class="service-option__text">
+                <strong>{{ s.value }}</strong>
+                <small>{{ s.descricao }}</small>
+              </span>
+              <span class="service-option__price">
+                @if (porteSelecionado()) {
+                  @if (promocaoAtiva) {
+                    <s><span class="sr-only">de </span>{{ precoNormal(s.value, porteSelecionado()) | currency: 'BRL' }}</s>
+                  }
+                  <strong><span class="sr-only">por </span>{{ precoFinal(s.value, porteSelecionado()) | currency: 'BRL' }}</strong>
+                } @else {
+                  <small>a partir de</small>
+                  <strong>{{ precoAPartirDe(s.value) | currency: 'BRL' }}</strong>
+                }
+              </span>
+            </label>
+          }
+        </div>
+        @if (!porteSelecionado()) {
+          <p class="hint"><i class="pi pi-info-circle"></i> Escolha o porte para ver o preço exato.</p>
+        }
       </fieldset>
 
       <fieldset>
@@ -146,6 +165,18 @@
         </div>
       </fieldset>
 
+      @if (resumo(); as r) {
+        <div class="schedule__summary" aria-live="polite">
+          <span>{{ r.servico }} · porte {{ r.porte }}</span>
+          <span class="schedule__summary-price">
+            @if (r.final < r.normal) {
+              <s><span class="sr-only">de </span>{{ r.normal | currency: 'BRL' }}</s>
+            }
+            <strong><span class="sr-only">por </span>{{ r.final | currency: 'BRL' }}</strong>
+          </span>
+        </div>
+      }
+
       <p-button
         type="submit"
         label="Enviar agendamento pelo WhatsApp"
@@ -157,19 +188,9 @@
     </form>
 
     <aside class="schedule__aside">
-      <div class="aside-card">
-        <h2>Nossos serviços</h2>
-        <ul>
-          @for (s of petshop.servicos; track s.value) {
-            <li>
-              <i [class]="s.icon"></i>
-              <div>
-                <strong>{{ s.label }}</strong>
-                <p>{{ s.descricao }}</p>
-              </div>
-            </li>
-          }
-        </ul>
+      <div class="aside-card aside-card--white">
+        <h2>Tabela de preços</h2>
+        <app-tabela-precos [porte]="porteSelecionado()" />
       </div>
 
       <div class="aside-card aside-card--dark">

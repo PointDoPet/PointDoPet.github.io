@@ -1,0 +1,61 @@
+.price-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+:host ::ng-deep .price-table__portes {
+  display: flex;
+
+  .p-togglebutton {
+    flex: 1;
+  }
+}
+
+.price-table__porte {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--pdp-ink-soft);
+}
+
+.price-table__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.price-table__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed rgba(17, 24, 39, 0.12);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.price-table__servico {
+  color: var(--pdp-graphite);
+  font-weight: 600;
+}
+
+.price-table__valores {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+
+  s {
+    font-size: 0.85rem;
+    color: var(--pdp-ink-soft);
+  }
+
+  strong {
+    font-size: 1.05rem;
+    color: var(--pdp-orange-deep);
+  }
+}

@@ -21,12 +21,50 @@ export const PETSHOP = {
     ultimoHorarioAntesDeFecharMinutos: 60,
   },
   servicos: [
-    { value: 'Banho', label: 'Banho', icon: 'pi pi-sparkles', descricao: 'Banho com shampoo adequado, secagem e perfume.' },
-    { value: 'Tosa', label: 'Tosa', icon: 'pi pi-star', descricao: 'Tosa higiênica ou na tesoura, do jeito que seu pet gosta.' },
-    { value: 'Banho e Tosa', label: 'Banho e Tosa', icon: 'pi pi-paw', descricao: 'O pacote completo para seu pet sair lindo e cheiroso.' },
+    { value: 'Banho', icon: 'pi pi-sparkles', descricao: 'Banho com shampoo adequado, secagem e perfume.' },
+    { value: 'Tosa', icon: 'pi pi-star', descricao: 'Tosa do jeito que seu pet gosta.' },
+    { value: 'Banho + Tosa na máquina', icon: 'pi pi-paw', descricao: 'Banho completo e tosa feita na máquina.' },
+    { value: 'Banho + Tosa higiênica', icon: 'pi pi-check-circle', descricao: 'Banho completo e tosa higiênica.' },
+    {
+      value: 'Banho + Tosa máquina + tesoura',
+      icon: 'pi pi-star-fill',
+      descricao: 'Banho completo, tosa na máquina e acabamento na tesoura.',
+    },
   ],
   portes: [
+    { value: 'XP', label: 'XP (mini)' },
     { value: 'pequeno', label: 'Pequeno (até 8kg)' },
     { value: 'médio', label: 'Médio (8kg a 15kg)' },
   ],
+  /** Preço normal (sem promoção) por porte e serviço. */
+  tabelaPrecos: {
+    XP: {
+      Banho: 55,
+      Tosa: 45,
+      'Banho + Tosa na máquina': 85,
+      'Banho + Tosa higiênica': 68,
+      'Banho + Tosa máquina + tesoura': 80,
+    },
+    pequeno: {
+      Banho: 60,
+      Tosa: 55,
+      'Banho + Tosa na máquina': 95,
+      'Banho + Tosa higiênica': 76,
+      'Banho + Tosa máquina + tesoura': 92,
+    },
+    médio: {
+      Banho: 70,
+      Tosa: 65,
+      'Banho + Tosa na máquina': 104,
+      'Banho + Tosa higiênica': 88,
+      'Banho + Tosa máquina + tesoura': 103,
+    },
+  } as Record<string, Record<string, number>>,
+  /** Desconto aplicado em todos os serviços enquanto `ativa` for true. */
+  promocao: {
+    ativa: true,
+    desconto: 20,
+    titulo: 'R$ 20,00 OFF em todos os serviços',
+    texto: 'Promoção válida durante o mês de inauguração!',
+  },
 };
