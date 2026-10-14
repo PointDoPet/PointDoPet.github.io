@@ -5,7 +5,7 @@
   gap: 0.5rem;
   padding: 1.5rem;
   border-radius: var(--pdp-radius);
-  background: var(--pdp-graphite);
+  background: var(--pdp-navy);
   color: #fff;
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.18);
 }
@@ -16,8 +16,8 @@
   gap: 0.4rem;
   padding: 0.3rem 0.75rem;
   border-radius: 999px;
-  background: var(--pdp-orange);
-  color: var(--pdp-graphite);
+  background: var(--pdp-amber);
+  color: var(--pdp-navy);
   font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -27,7 +27,7 @@
 .promo__title {
   font-size: clamp(1.4rem, 3.5vw, 2rem);
   line-height: 1.15;
-  color: var(--pdp-orange);
+  color: var(--pdp-amber);
 }
 
 .promo__text {

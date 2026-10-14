@@ -1,5 +1,5 @@
 .hero {
-  background: var(--pdp-orange);
+  background: var(--pdp-amber);
   padding: 4rem 0 5rem;
   overflow: hidden;
 }
@@ -42,16 +42,17 @@
 }
 
 .hero__circle {
-  width: 260px;
-  height: 260px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  background: var(--pdp-graphite);
+  background: var(--pdp-cream-deep);
+  border: 6px solid var(--pdp-navy);
   display: grid;
   place-items: center;
 
-  i {
-    font-size: 7rem;
-    color: var(--pdp-orange);
+  img {
+    width: 86%;
+    height: auto;
   }
 }
 
@@ -88,7 +89,7 @@
   bottom: 20px;
   right: 10%;
   background: #fff;
-  color: var(--pdp-graphite);
+  color: var(--pdp-navy);
   font-weight: 700;
   padding: 0.6rem 1rem;
   border-radius: 999px;
@@ -119,8 +120,8 @@
   width: 3rem;
   height: 3rem;
   border-radius: 0.9rem;
-  background: var(--pdp-orange);
-  color: var(--pdp-graphite);
+  background: var(--pdp-amber);
+  color: var(--pdp-navy);
   font-size: 1.3rem;
   margin-bottom: 1rem;
 }
@@ -130,7 +131,7 @@
 
   strong {
     font-size: 1.15rem;
-    color: var(--pdp-orange-deep);
+    color: var(--pdp-amber-deep);
   }
 }
 
@@ -163,11 +164,11 @@
 .link-arrow {
   font-weight: 700;
   text-decoration: none;
-  color: var(--pdp-graphite);
-  border-bottom: 2px solid var(--pdp-orange);
+  color: var(--pdp-navy);
+  border-bottom: 2px solid var(--pdp-amber);
 
   &:hover {
-    border-color: var(--pdp-graphite);
+    border-color: var(--pdp-navy);
   }
 }
 
@@ -198,13 +199,13 @@
   display: grid;
   place-items: center;
   font-weight: 800;
-  background: var(--pdp-graphite);
-  color: var(--pdp-orange);
+  background: var(--pdp-navy);
+  color: var(--pdp-amber);
 }
 
 .step__icon {
   font-size: 1.8rem;
-  color: var(--pdp-orange-strong);
+  color: var(--pdp-amber-strong);
   margin-bottom: 0.75rem;
   display: block;
 }
@@ -220,7 +221,7 @@
   gap: 0.35rem;
   padding: 1.5rem;
   border-radius: var(--pdp-radius);
-  border: 2px solid var(--pdp-orange-soft);
+  border: 2px solid var(--pdp-amber-soft);
   background: #fff;
   text-decoration: none;
   transition:
@@ -231,13 +232,13 @@
   &:hover,
   &:focus-visible {
     transform: translateY(-3px);
-    border-color: var(--pdp-orange);
+    border-color: var(--pdp-amber);
     box-shadow: 0 10px 24px rgba(234, 179, 8, 0.2);
   }
 
   strong {
     font-size: 1.15rem;
-    color: var(--pdp-graphite);
+    color: var(--pdp-navy);
   }
 }
 
@@ -247,8 +248,8 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: var(--pdp-orange);
-  color: var(--pdp-graphite);
+  background: var(--pdp-amber);
+  color: var(--pdp-navy);
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }

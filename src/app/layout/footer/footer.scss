@@ -1,10 +1,10 @@
 .footer {
-  background: var(--pdp-graphite);
+  background: var(--pdp-navy);
   color: #e5e7eb;
   padding: 3rem 0 1.5rem;
 
   h3 {
-    color: var(--pdp-orange);
+    color: var(--pdp-amber);
     font-size: 1rem;
     margin-bottom: 0.75rem;
   }
@@ -13,7 +13,7 @@
     text-decoration: none;
 
     &:hover {
-      color: var(--pdp-orange);
+      color: var(--pdp-amber);
     }
   }
 
@@ -43,8 +43,8 @@
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  background: var(--pdp-orange);
-  color: var(--pdp-graphite);
+  background: var(--pdp-amber);
+  color: var(--pdp-navy);
 
   i {
     margin: 0;

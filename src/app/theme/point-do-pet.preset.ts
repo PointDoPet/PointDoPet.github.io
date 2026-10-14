@@ -1,44 +1,49 @@
 import { definePreset } from '@primeuix/themes';
 import Aura from '@primeuix/themes/aura';
 
+// Escala gerada a partir do amarelo do logo (#ffac08 = 500).
+const amareloLogo = {
+  50: '#fff8eb',
+  100: '#ffefcc',
+  200: '#ffdd94',
+  300: '#ffcb5c',
+  400: '#ffbb2e',
+  500: '#ffac08',
+  600: '#e08f00',
+  700: '#b06c00',
+  800: '#8a5300',
+  900: '#6e4300',
+  950: '#3f2500',
+};
+
+const navyLogo = '#071a28';
+
 export const PointDoPetPreset = definePreset(Aura, {
   semantic: {
-    primary: {
-      50: '{orange.50}',
-      100: '{orange.100}',
-      200: '{orange.200}',
-      300: '{orange.300}',
-      400: '{orange.400}',
-      500: '{orange.500}',
-      600: '{orange.600}',
-      700: '{orange.700}',
-      800: '{orange.800}',
-      900: '{orange.900}',
-      950: '{orange.950}',
-    },
+    primary: amareloLogo,
     colorScheme: {
       light: {
         primary: {
-          color: '{orange.500}',
-          contrastColor: '{surface.900}',
-          hoverColor: '{orange.600}',
-          activeColor: '{orange.700}',
+          color: '{primary.500}',
+          contrastColor: navyLogo,
+          hoverColor: '{primary.600}',
+          activeColor: '{primary.700}',
         },
         highlight: {
-          background: '{orange.100}',
-          focusBackground: '{orange.200}',
-          color: '{surface.900}',
-          focusColor: '{surface.900}',
+          background: '{primary.100}',
+          focusBackground: '{primary.200}',
+          color: navyLogo,
+          focusColor: navyLogo,
         },
       },
     },
   },
   components: {
-    // Texto laranja claro sobre branco tem pouco contraste: variantes sem fundo usam um tom escuro.
+    // Amarelo sobre branco tem pouco contraste: variantes sem fundo usam um tom escuro.
     button: {
-      outlined: { primary: { color: '{orange.800}', borderColor: '{orange.500}' } },
-      text: { primary: { color: '{orange.800}' } },
-      link: { color: '{orange.800}', hoverColor: '{orange.900}', activeColor: '{orange.900}' },
+      outlined: { primary: { color: '{primary.800}', borderColor: '{primary.500}' } },
+      text: { primary: { color: '{primary.800}' } },
+      link: { color: '{primary.800}', hoverColor: '{primary.900}', activeColor: '{primary.900}' },
     },
   },
 });

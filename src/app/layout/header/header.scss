@@ -6,8 +6,9 @@
 }
 
 .header {
-  background: var(--pdp-orange);
-  box-shadow: 0 2px 12px rgba(17, 24, 39, 0.12);
+  background: var(--pdp-cream-deep);
+  border-bottom: 3px solid var(--pdp-amber);
+  box-shadow: 0 2px 12px rgba(7, 26, 40, 0.12);
 }
 
 .brand {
@@ -16,18 +17,12 @@
   gap: 0.5rem;
   margin-right: 1.5rem;
   text-decoration: none;
-  color: var(--pdp-graphite);
+  color: var(--pdp-navy);
 }
 
-.brand__icon {
-  display: grid;
-  place-items: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 50%;
-  background: var(--pdp-graphite);
-  color: var(--pdp-orange);
-  font-size: 1.45rem;
+.brand__logo {
+  width: 3.5rem;
+  height: 3.5rem;
 }
 
 .brand__name {
@@ -49,7 +44,7 @@
 
 :host ::ng-deep {
   .header__cart.p-button {
-    color: var(--pdp-graphite);
+    color: var(--pdp-navy);
     font-size: 1.2rem;
   }
 
@@ -71,8 +66,13 @@
     margin-right: 0.5rem;
   }
 
+  .brand__logo {
+    width: 3rem;
+    height: 3rem;
+  }
+
   .brand__name {
-    font-size: 1.1rem;
+    display: none;
   }
 
   :host ::ng-deep .header__cta .p-button-label {

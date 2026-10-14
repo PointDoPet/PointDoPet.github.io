@@ -1,15 +1,17 @@
 @use 'primeicons/primeicons.css';
 
 :root {
-  --pdp-orange: #f97316;
-  --pdp-orange-strong: #ea580c;
-  --pdp-orange-soft: #ffedd5;
-  /* Laranja para texto sobre fundo claro (contraste AA). */
-  --pdp-orange-deep: #c2410c;
-  --pdp-cream: #fff7ed;
-  --pdp-ink: #1f2937;
-  --pdp-ink-soft: #4b5563;
-  --pdp-graphite: #111827;
+  --pdp-amber: #ffac08;
+  --pdp-amber-strong: #e08f00;
+  --pdp-amber-soft: #ffe7b3;
+  /* Âmbar para texto sobre fundo claro (contraste AA). */
+  --pdp-amber-deep: #8a5300;
+  --pdp-cream: #fdf0e0;
+  /* Mesmo creme do fundo do logo. */
+  --pdp-cream-deep: #fcebd9;
+  --pdp-ink: #13283a;
+  --pdp-ink-soft: #4a5866;
+  --pdp-navy: #071a28;
   --pdp-radius: 1rem;
   --pdp-max-width: 1160px;
 }
@@ -46,7 +48,7 @@ h2,
 h3 {
   line-height: 1.15;
   margin: 0 0 0.5rem;
-  color: var(--pdp-graphite);
+  color: var(--pdp-navy);
 }
 
 p {
@@ -93,22 +95,22 @@ img {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--pdp-graphite);
-  background: var(--pdp-orange-soft);
+  color: var(--pdp-navy);
+  background: var(--pdp-amber-soft);
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
   margin-bottom: 0.75rem;
 }
 
 .btn-dark.p-button {
-  background: var(--pdp-graphite);
-  border-color: var(--pdp-graphite);
-  color: #fff;
+  background: var(--pdp-navy);
+  border-color: var(--pdp-navy);
+  color: var(--pdp-cream);
 
   &:not(:disabled):hover {
-    background: #000;
-    border-color: #000;
-    color: #fff;
+    background: #02101a;
+    border-color: #02101a;
+    color: var(--pdp-cream);
   }
 }
 
